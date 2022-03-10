@@ -1,0 +1,55 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+			crossorigin="anonymous"
+		/>
+		<script src="/socket.io/socket.io.js"></script>
+		<title>hb</title>
+	</head>
+	<body>
+		<form id="formulario">
+			<div class="mb-3">
+				<label class="form-label">Title</label>
+				<input class="form-control" name="title" id="title" required />
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Price</label>
+				<input class="form-control" name="price" id="price" required />
+			</div>
+			<div class="mb-3">
+				<label class="form-label">URL</label>
+				<input class="form-control" name="thumbnail" id="thumbnail" required />
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">productos disponibles</th>
+				</tr>
+			</thead>
+			<tbody id="productsTable"></tbody>
+		</table>
+		<form id="messageForm">
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">Usuario:</label>
+				<input id="user" />
+			</div>
+			<div class="mb-3" id="messageForm">
+				<label for="exampleInputPassword1" class="form-label">mensaje:</label>
+				<input placeholder="Escribí un mensaje..." id="msg" />
+				<button type="submit" id="send" class="btn btn-success">Submit</button>
+			</div>
+		</form>
+
+		<div id="mensajes"></div>
+
+		<script src="js/sockets.js"></script>
+	</body>
+</html>
