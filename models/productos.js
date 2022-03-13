@@ -2,15 +2,20 @@ const knex = require("knex");
 const fs = require("fs/promises");
 const path = require("path");
 
-class Contenedor {
+class Producto {
 	constructor() {
-		this.db = knex({
-			client: "sqlite3",
-			connection: {
-				filename: "./productos.sqlite",
-			},
-			useNullAsDefault: true,
-		});
+		this.db = knex(
+			(this.movieDbConfig = {
+				client: "mysql",
+				connection: {
+					host: "localhost",
+					port: 3306,
+					user: "root",
+					password: "root",
+					database: "productos_db",
+				},
+			})
+		);
 	}
 
 	async getAll() {
@@ -68,4 +73,4 @@ class Contenedor {
 	}
 }
 
-module.exports = new Contenedor();
+module.exports = new Producto();
