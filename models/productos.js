@@ -11,7 +11,7 @@ class Producto {
 					host: "localhost",
 					port: 3306,
 					user: "root",
-					password: "root",
+					password: "",
 					database: "productos_db",
 				},
 			})
@@ -25,7 +25,7 @@ class Producto {
 	}
 
 	async getById(id) {
-		const movie = await this.db("movies").where({ id }).first();
+		const movie = await this.db("productos").where({ id }).first();
 
 		return movie;
 	}
@@ -36,7 +36,7 @@ class Producto {
 	}
 
 	async save(body) {
-		const result = await this.db("movies").insert(body);
+		const result = await this.db("productos").insert(body);
 
 		console.log(result[0]);
 
@@ -44,7 +44,7 @@ class Producto {
 	}
 
 	async delete(id) {
-		const result = await this.db("movies").where({ id }).del();
+		const result = await this.db("productos").where({ id }).del();
 		console.log(result);
 	}
 

@@ -2,19 +2,17 @@ const knex = require("knex");
 
 class Mensaje {
 	constructor() {
-		this.db = knex(
-			(this.movieDbConfig = {
-				client: "sqlite3",
-				connection: {
-					filename: "../ecommerce/mensajes.sqlite",
-				},
-				useNullAsDefault: true,
-			})
-		);
+		this.db = knex({
+			client: "sqlite3",
+			connection: {
+				filename: "../ecommerce/mensajes.sqlite",
+			},
+			useNullAsDefault: true,
+		});
 	}
 
-	async init() {
-		await this.db.schema.createTableIfNotExists("messages", (table) => {
+	async loadDataM() {
+		await this.db.schema.createTable("messages", (table) => {
 			table.increments("id");
 			table.string("from");
 			table.string("to");
@@ -22,9 +20,9 @@ class Mensaje {
 		});
 
 		await this.db("messages").insert({
-			from: "",
-			to: "",
-			body: "",
+			from: "manuela",
+			to: "Brian Paul",
+			body: "hola tutor",
 		});
 
 		this.db.destroy();

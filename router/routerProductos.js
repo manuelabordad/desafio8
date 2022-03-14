@@ -1,17 +1,17 @@
 const { Router } = require("express");
-const Contenedor = require("../models/productos");
+const Producto = require("../models/productos");
 
 const router = Router();
 
 router.get("/", async (req, res) => {
-	const productos = await Contenedor.getAll();
+	const productos = await Producto.getAll();
 	res.send(productos);
 });
 
 router.get("/:id", async (req, res) => {
 	const { id } = req.params;
 
-	const producto = await Contenedor.getById(id);
+	const producto = await Producto.getById(id);
 	if (!producto) {
 		res.sendStatus(404);
 	} else {
@@ -22,7 +22,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
 	const { body } = req;
 
-	const id = await Contenedor.save(body);
+	const id = await Producto.save(body);
 
 	res.status(201).send({ id });
 });

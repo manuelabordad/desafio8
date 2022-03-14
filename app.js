@@ -1,17 +1,17 @@
 (async () => {
 	const express = require("express");
 	const Producto = require("./models/productos");
-	const Router = require("./router/router");
+	const mensaje = require("./models/mensajes");
+	const routerProd = require("./router/routerProductos");
 	const app = express();
 
 	try {
 		await Producto.loadData();
+		// await mensaje.loadDataM();
 
 		app.use(express.json());
 
-		app.get("/", (rq, rs) => rs.send("Hola"));
-
-		app.use("/api/productos", router);
+		app.use("/api/productos", routerProd);
 
 		app.listen(8080, () => console.log("Listening"));
 	} catch (e) {
